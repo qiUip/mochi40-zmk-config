@@ -42,17 +42,21 @@
 		compatible = "zmk,keymap";
 
 		default_layer {
-				// -----------------------------------------------------------------------------------------
-				// |  ESC  |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   | BSPC  |
-				// |  TAB  |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
-				// | SHIFT |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   |  RET  |
-				// | LCTL  | LGUI | LALT |  \   | LOWR | SPC  |  RAIS | LARW | DARW | UARW  |  RARW |  P/P  |
 
 			bindings = <
-				&kp TAB       &kp Q    &kp W    &kp E    &kp R       &kp T     &kp Y    &kp U     &kp I     &kp O     &kp P     &kp BSPC
-				&mt LCTRL ESC &kp A    &kp S    &kp D    &kp F       &kp G     &kp H    &kp J     &kp K     &kp L     &td0      &kp RET
-				&kp LSHFT     &kp Z    &kp X    &kp C    &kp V       &kp B     &kp N    &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
-				&mo 3         &kp LCTL &kp LALT &kp LGUI &lt 2 SPACE &kp SPACE &lt 1 SPACE        &kp RGUI  &kp RALT  &kp RCTL  &kp C_AC_SEARCH            &kp C_PP
+//    ┌─────────────┬────────┬──────┬──────┬──────────┬─────┬──────────┬──────┬──────┬────────┬───────────────┬──────┐
+//    │     tab     │   Q    │  W   │  E   │    R     │  T  │    Y     │  U   │  I   │   O    │       P       │ bspc │
+//    ├─────────────┼────────┼──────┼──────┼──────────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
+//    │ mt lctl esc │   A    │  S   │  D   │    F     │  G  │    H     │  J   │  K   │   L    │     &td0      │ ent  │
+//    ├─────────────┼────────┼──────┼──────┼──────────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
+//    │    lsft     │   Z    │  X   │  C   │    V     │  B  │    N     │  M   │  ,   │   .    │       /       │ rsft │
+//    ├─────────────┼────────┼──────┼──────┼──────────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
+//    │    mo 3     │ lctlTL │ lalt │ lgui │ lt 2 spc │ spc │ lt 1 spc │ rgui │ ralt │ rctlTL │ C_AC_SEArctlH │ play │
+//    └─────────────┴────────┴──────┴──────┴──────────┴─────┴──────────┴──────┴──────┴────────┴───────────────┴──────┘
+  &kp TAB         &kp Q      &kp W      &kp E      &kp R         &kp T       &kp Y         &kp U      &kp I       &kp O      &kp P             &kp BSPC
+  &mt LCTRL ESC   &kp A      &kp S      &kp D      &kp F         &kp G       &kp H         &kp J      &kp K       &kp L      &td0              &kp RET
+  &kp LSHFT       &kp Z      &kp X      &kp C      &kp V         &kp B       &kp N         &kp M      &kp COMMA   &kp DOT    &kp FSLH          &kp RSHFT
+  &mo 3           &kp LCTL   &kp LALT   &kp LGUI   &lt 2 SPACE   &kp SPACE   &lt 1 SPACE   &kp RGUI   &kp RALT    &kp RCTL   &kp C_AC_SEARCH   &kp C_PP
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -60,29 +64,55 @@
 
 		right {
 			bindings = <
-				&kp GRAVE    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5     &kp N6     &kp N7     &kp N8        &kp N9       &kp N0       &kp DEL
-				&trans       &kp LBKT   &kp RBKT   &kp MINUS  &kp EQUAL  &trans     &kp LEFT   &kp DOWN   &kp UP        &kp RIGHT    &td1         &td2
-				&trans       &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT  &kp CARET  &kp AMPS   &kp ASTRK     &kp LPAR     &kp RPAR     &trans
-				&kp HOME     &trans     &trans     &trans     &kp BSPC   &trans     &trans                &trans        &trans       &trans       &kp END  &trans
+//    ┌──────┬─────┬─────┬─────┬──────┬─────┬──────┬──────┬─────┬──────┬──────┬──────┐
+//    │  `   │  1  │  2  │  3  │  4   │  5  │  6   │  7   │  8  │  9   │  0   │ del  │
+//    ├──────┼─────┼─────┼─────┼──────┼─────┼──────┼──────┼─────┼──────┼──────┼──────┤
+//    │      │  [  │  ]  │  -  │  =   │     │ left │ down │ up  │ rght │ &td1 │ &td2 │
+//    ├──────┼─────┼─────┼─────┼──────┼─────┼──────┼──────┼─────┼──────┼──────┼──────┤
+//    │      │  !  │  @  │  #  │  $   │  %  │  ^   │  &   │  *  │  (   │  )   │      │
+//    ├──────┼─────┼─────┼─────┼──────┼─────┼──────┼──────┼─────┼──────┼──────┼──────┤
+//    │ home │     │     │     │ bspc │     │      │      │     │      │ end  │      │
+//    └──────┴─────┴─────┴─────┴──────┴─────┴──────┴──────┴─────┴──────┴──────┴──────┘
+  &kp GRAVE   &kp N1     &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0     &kp DEL
+  &trans      &kp LBKT   &kp RBKT   &kp MINUS   &kp EQUAL   &trans      &kp LEFT    &kp DOWN   &kp UP      &kp RIGHT   &td1       &td2
+  &trans      &kp EXCL   &kp AT     &kp HASH    &kp DLLR    &kp PRCNT   &kp CARET   &kp AMPS   &kp ASTRK   &kp LPAR    &kp RPAR   &trans
+  &kp HOME    &trans     &trans     &trans      &kp BSPC    &trans      &trans      &trans     &trans      &trans      &kp END    &trans
 			>;
 		};
 
 		left {
 			bindings = <
-				&kp TILDE    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5     &kp N6     &kp N7     &kp N8        &kp N9       &kp N0     &kp DEL
-				&trans       &kp LBRC   &kp RBRC   &kp UNDER  &kp PLUS   &trans     &kp LEFT   &kp DOWN   &kp UP        &kp RIGHT    &kp NUBS   &td3
-				&trans       &kp F1     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6     &kp F7     &kp F8        &kp F9       &kp F10    &trans
-				&kp PG_UP    &trans     &trans     &trans     &trans     &trans     &kp BSPC              &trans        &trans       &trans     &kp PG_DN  &trans
-
+//    ┌──────┬─────┬─────┬─────┬─────┬─────┬──────┬──────┬─────┬──────┬──────┬──────┐
+//    │  ~   │  1  │  2  │  3  │  4  │  5  │  6   │  7   │  8  │  9   │  0   │ del  │
+//    ├──────┼─────┼─────┼─────┼─────┼─────┼──────┼──────┼─────┼──────┼──────┼──────┤
+//    │      │  {  │  }  │  _  │  +  │     │ left │ down │ up  │ rght │ iso\ │ &td3 │
+//    ├──────┼─────┼─────┼─────┼─────┼─────┼──────┼──────┼─────┼──────┼──────┼──────┤
+//    │      │ f1  │ f2  │ f3  │ f4  │ f5  │  f6  │  f7  │ f8  │  f9  │ f10  │      │
+//    ├──────┼─────┼─────┼─────┼─────┼─────┼──────┼──────┼─────┼──────┼──────┼──────┤
+//    │ pgup │     │     │     │     │     │ bspc │      │     │      │ pgdn │      │
+//    └──────┴─────┴─────┴─────┴─────┴─────┴──────┴──────┴─────┴──────┴──────┴──────┘
+  &kp TILDE   &kp N1     &kp N2     &kp N3      &kp N4     &kp N5   &kp N6     &kp N7     &kp N8   &kp N9      &kp N0      &kp DEL
+  &trans      &kp LBRC   &kp RBRC   &kp UNDER   &kp PLUS   &trans   &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp NUBS    &td3
+  &trans      &kp F1     &kp F2     &kp F3      &kp F4     &kp F5   &kp F6     &kp F7     &kp F8   &kp F9      &kp F10     &trans
+  &kp PG_UP   &trans     &trans     &trans      &trans     &trans   &kp BSPC   &trans     &trans   &trans      &kp PG_DN   &trans
 			>;
 		};
 
 		control {
 			bindings = <
-				&trans &bootloader &bt BT_CLR &bt BT_PRV &bt BT_NXT &trans  &trans  &trans  &trans  &trans  &trans  &trans
-				&trans &trans      &trans     &trans     &trans     &trans  &trans       &trans       &trans        &trans        &trans  &trans
-				&trans &trans      &trans     &trans     &trans     &trans  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &trans  &trans
-				&trans &trans      &trans     &trans     &trans     &trans  &trans       &trans       &trans        &trans        &trans  &trans
+//    ┌─────┬──────┬────────┬────────┬────────┬─────┬──────────┬──────────┬──────────┬──────────┬─────┬─────┐
+//    │     │ boot │ bt_clr │ bt_prv │ bt_nxt │     │          │          │          │          │     │     │
+//    ├─────┼──────┼────────┼────────┼────────┼─────┼──────────┼──────────┼──────────┼──────────┼─────┼─────┤
+//    │     │      │        │        │        │     │          │          │          │          │     │     │
+//    ├─────┼──────┼────────┼────────┼────────┼─────┼──────────┼──────────┼──────────┼──────────┼─────┼─────┤
+//    │     │      │        │        │        │     │ bt_sel 0 │ bt_sel 1 │ bt_sel 2 │ bt_sel 3 │     │     │
+//    ├─────┼──────┼────────┼────────┼────────┼─────┼──────────┼──────────┼──────────┼──────────┼─────┼─────┤
+//    │     │      │        │        │        │     │          │          │          │          │     │     │
+//    └─────┴──────┴────────┴────────┴────────┴─────┴──────────┴──────────┴──────────┴──────────┴─────┴─────┘
+  &trans   &bootloader   &bt BT_CLR   &bt BT_PRV   &bt BT_NXT   &trans   &trans         &trans         &trans         &trans         &trans   &trans
+  &trans   &trans        &trans       &trans       &trans       &trans   &trans         &trans         &trans         &trans         &trans   &trans
+  &trans   &trans        &trans       &trans       &trans       &trans   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &trans   &trans
+  &trans   &trans        &trans       &trans       &trans       &trans   &trans         &trans         &trans         &trans         &trans   &trans
 			>;
 		};
 	};
