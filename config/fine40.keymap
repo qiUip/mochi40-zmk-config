@@ -51,18 +51,18 @@
 //    ├─────────────┼────────┼──────┼──────┼──────────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
 //    │    lsft     │   Z    │  X   │  C   │    V     │  B  │    N     │  M   │  ,   │   .    │       /       │ rsft │
 //    ├─────────────┼────────┼──────┼──────┼──────────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
-//    │    mo 3     │ lctlTL │ lalt │ lgui │ lt 2 spc │ spc │ lt 1 spc │ rgui │ ralt │ rctlTL │ C_AC_SEArctlH │ play │
+//    │    mo 3     │ lctlTL │ lalt │ lgui │ lt 2 spc │     │ lt 1 spc │ rgui │ ralt │ rctlTL │ C_AC_SEArctlH │ mo 4 │
 //    └─────────────┴────────┴──────┴──────┴──────────┴─────┴──────────┴──────┴──────┴────────┴───────────────┴──────┘
-  &kp TAB         &kp Q      &kp W      &kp E      &kp R         &kp T       &kp Y         &kp U      &kp I       &kp O      &kp P             &kp BSPC
-  &mt LCTRL ESC   &kp A      &kp S      &kp D      &kp F         &kp G       &kp H         &kp J      &kp K       &kp L      &td0              &kp RET
-  &kp LSHFT       &kp Z      &kp X      &kp C      &kp V         &kp B       &kp N         &kp M      &kp COMMA   &kp DOT    &kp FSLH          &kp RSHFT
-  &mo 3           &kp LCTL   &kp LALT   &kp LGUI   &lt 2 SPACE   &kp SPACE   &lt 1 SPACE   &kp RGUI   &kp RALT    &kp RCTL   &kp C_AC_SEARCH   &kp C_PP
+  &kp TAB         &kp Q      &kp W      &kp E      &kp R         &kp T    &kp Y         &kp U      &kp I       &kp O      &kp P             &kp BSPC
+  &mt LCTRL ESC   &kp A      &kp S      &kp D      &kp F         &kp G    &kp H         &kp J      &kp K       &kp L      &td0              &kp RET
+  &kp LSHFT       &kp Z      &kp X      &kp C      &kp V         &kp B    &kp N         &kp M      &kp COMMA   &kp DOT    &kp FSLH          &kp RSHFT
+  &mo 3           &kp LCTL   &kp LALT   &kp LGUI   &lt 2 SPACE   &trans   &lt 1 SPACE   &kp RGUI   &kp RALT    &kp RCTL   &kp C_AC_SEARCH   &mo 4
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
-		right {
+		symbols {
 			bindings = <
 //    ┌──────┬─────┬─────┬─────┬──────┬─────┬──────┬──────┬─────┬──────┬──────┬──────┐
 //    │  `   │  1  │  2  │  3  │  4   │  5  │  6   │  7   │  8  │  9   │  0   │ del  │
@@ -80,7 +80,7 @@
 			>;
 		};
 
-		left {
+		function {
 			bindings = <
 //    ┌──────┬─────┬─────┬─────┬─────┬─────┬──────┬──────┬─────┬──────┬──────┬──────┐
 //    │  ~   │  1  │  2  │  3  │  4  │  5  │  6   │  7   │  8  │  9   │  0   │ del  │
@@ -98,7 +98,7 @@
 			>;
 		};
 
-		control {
+		bluetooth {
 			bindings = <
 //    ┌─────┬──────┬────────┬────────┬────────┬─────┬──────────┬──────────┬──────────┬──────────┬─────┬─────┐
 //    │     │ boot │ bt_clr │ bt_prv │ bt_nxt │     │          │          │          │          │     │     │
@@ -113,6 +113,24 @@
   &trans   &trans        &trans       &trans       &trans       &trans   &trans         &trans         &trans         &trans         &trans   &trans
   &trans   &trans        &trans       &trans       &trans       &trans   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &trans   &trans
   &trans   &trans        &trans       &trans       &trans       &trans   &trans         &trans         &trans         &trans         &trans   &trans
+			>;
+		};
+
+		gaming {
+			bindings = <
+//    ┌─────────────┬────────┬──────┬──────┬─────┬─────┬──────────┬──────┬──────┬────────┬───────────────┬──────┐
+//    │     tab     │   Q    │  W   │  E   │  R  │  T  │    Y     │  U   │  I   │   O    │       P       │ bspc │
+//    ├─────────────┼────────┼──────┼──────┼─────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
+//    │ mt lctl esc │   A    │  S   │  D   │  F  │  G  │    H     │  J   │  K   │   L    │     &td0      │ ent  │
+//    ├─────────────┼────────┼──────┼──────┼─────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
+//    │    lsft     │   Z    │  X   │  C   │  V  │  B  │    N     │  M   │  ,   │   .    │       /       │ rsft │
+//    ├─────────────┼────────┼──────┼──────┼─────┼─────┼──────────┼──────┼──────┼────────┼───────────────┼──────┤
+//    │     f3      │ lctlTL │ lalt │ lgui │ spc │     │ lt 2 spc │ rgui │ ralt │ rctlTL │ C_AC_SEArctlH │      │
+//    └─────────────┴────────┴──────┴──────┴─────┴─────┴──────────┴──────┴──────┴────────┴───────────────┴──────┘
+  &kp TAB         &kp Q      &kp W      &kp E      &kp R       &kp T    &kp Y         &kp U      &kp I       &kp O      &kp P             &kp BSPC
+  &mt LCTRL ESC   &kp A      &kp S      &kp D      &kp F       &kp G    &kp H         &kp J      &kp K       &kp L      &td0              &kp RET
+  &kp LSHFT       &kp Z      &kp X      &kp C      &kp V       &kp B    &kp N         &kp M      &kp COMMA   &kp DOT    &kp FSLH          &kp RSHFT
+  &kp F3          &kp LCTL   &kp LALT   &kp LGUI   &kp SPACE   &trans   &lt 2 SPACE   &kp RGUI   &kp RALT    &kp RCTL   &kp C_AC_SEARCH   &trans
 			>;
 		};
 	};
